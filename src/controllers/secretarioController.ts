@@ -16,7 +16,7 @@ export const createSecretario = async ( req: Request, res: Response) => {
 export const getAllSecretarios = async (req: Request, res: Response) => {
     try { 
         const secretarios = await secretarioService.getAll();
-        return res.json(secretarioService);
+        return res.json(secretarios);
     } catch (error: any) {
         return res.status(500).json({ message: error.message });
     }
@@ -34,7 +34,7 @@ export const getSecretarioById = async (req: Request, res: Response) => {
 export const updateSecretario = async (req: Request, res: Response) => {
     try {
         const secretario = await secretarioService.update(Number(req.params.id), req.body);
-        return
+        return res.json(secretario);
     } catch (error: any) {
         if (error.code === 'P2025') return res.status(404).json({ message: 'Secretário(a) não encontrado(a)' });
         if (error.code === 'P2002') return res.status(409).json({ message: 'Email já está em uso.' });
