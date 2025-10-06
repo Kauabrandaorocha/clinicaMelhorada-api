@@ -31,7 +31,7 @@ export const getMedicoById = async (req: Request, res: Response) => {
     }
 };
 
-export const updatePaciente = async (req: Request, res: Response) => {
+export const updateMedico = async (req: Request, res: Response) => {
     try {
         const medico = await medicoService.update(Number(req.params.id), req.body);
         return res.json(medico);
@@ -42,7 +42,7 @@ export const updatePaciente = async (req: Request, res: Response) => {
     }
 };
 
-export const deletePaciente = async (req: Request, res: Response) => {
+export const deleteMedico = async (req: Request, res: Response) => {
     try {
         await medicoService.remove(Number(req.params.id));
         return res.status(204).send();
